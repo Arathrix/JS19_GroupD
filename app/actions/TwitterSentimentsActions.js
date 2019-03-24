@@ -10,7 +10,7 @@ var TwitterSentimentsActions = {
             .then(function (sentiments) {
                 AppDispatcher.handleServerAction({
                     actionType: Constants.RECEIVE_TWITTER_TOP_SENTIMENTS,
-                    data: sentiments
+                    data: {}
                 });
             });
     },
@@ -20,7 +20,7 @@ var TwitterSentimentsActions = {
             .then(function (sentiments) {
                 AppDispatcher.handleServerAction({
                     actionType: Constants.RECEIVE_TWITTER_FLOP_SENTIMENTS,
-                    data: sentiments
+                    data: {}
                 });
             });
     },
@@ -30,7 +30,7 @@ var TwitterSentimentsActions = {
             .then(function (sentiments) {
                 AppDispatcher.handleServerAction({
                     actionType: Constants.RECEIVE_TWITTER_DISCUSSED_SENTIMENTS,
-                    data: sentiments
+                    data: {}
                 });
             });
     },
@@ -40,7 +40,7 @@ var TwitterSentimentsActions = {
             .then(function (sentiments) {
                 AppDispatcher.handleServerAction({
                     actionType: Constants.RECEIVE_TWITTER_CHARACTER_SENTIMENT,
-                    data: sentiments
+                    data: {}
                 });
             });
     },
@@ -55,7 +55,7 @@ var TwitterSentimentsActions = {
       .then(function (sentiments) {
         AppDispatcher.handleServerAction({
           actionType: Constants.RECEIVE_TWITTER_CONTROVERSIAL_SENTIMENTS,
-          data: sentiments
+          data: {}
         });
       });
     },
@@ -68,7 +68,7 @@ var TwitterSentimentsActions = {
         .then(function (sentiments) {
           AppDispatcher.handleServerAction({
             actionType: Constants.RECEIVE_TWITTER_TOP_SENTIMENTS_D5,
-            data: sentiments
+            data: {}
           });
         });
     },
@@ -82,7 +82,7 @@ var TwitterSentimentsActions = {
         .then(function (sentiments) {
           AppDispatcher.handleServerAction({
             actionType: Constants.RECEIVE_TWITTER_FLOP_SENTIMENTS_D5,
-            data: sentiments
+            data: {}
           });
         });
     },
@@ -96,7 +96,7 @@ var TwitterSentimentsActions = {
         .then(function (sentiments) {
           AppDispatcher.handleServerAction({
             actionType: Constants.RECEIVE_TWITTER_DISCUSSED_SENTIMENTS_D5,
-            data: sentiments
+            data: {}
           });
         });
     }

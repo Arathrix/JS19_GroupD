@@ -46,7 +46,6 @@
     "global": "^4.3.2",
     "gotdailysentiment": "latest",
     "gotmap": "latest",
-    "gotsentimental": "latest",
     "history": "^2.0.1",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.9.0",

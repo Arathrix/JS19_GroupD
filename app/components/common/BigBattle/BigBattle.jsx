@@ -67,18 +67,6 @@ export default class BigBattle extends Component {
         </Row>
         <br />
         <p>The tombstone shows our <strong>predicted likelihood of death</strong>. Read how we calculate the score <a href="/machine-learning-algorithm-predicts-death-game-of-thrones">here</a>!</p>
-        <br />
-        <Row className="big-battle-info">
-          <h3 className="center">Twitter Sentiments</h3>
-          <Col xs={12} md={6}>
-            <Link to={'/characters/' + this.props.name1}><h4 className="big-battle-name">{this.props.name1}</h4></Link>
-            <svg id="chart1" width="100%" height="400"></svg>
-          </Col>
-          <Col xs={12} md={6}>
-            <Link to={'/characters/' + this.props.name2}><h4 className="big-battle-name">{this.props.name2}</h4></Link>
-            <svg id="chart2" width="100%" height="400"></svg>
-          </Col>
-        </Row>
       </Grid>
     );
   }
