@@ -112,8 +112,14 @@ export default class ForTheThrone extends Component {
     render() {
         return (
             <div id="fttContainer">
-                <div className="fttCharArea fttLeft" onMouseEnter={this.focus.bind(this)}></div>
-                <div className="fttCharArea fttRight" onMouseEnter={this.focus.bind(this)}></div>
+                
+                <div className="fttCharArea fttLeft" onMouseEnter={this.focus.bind(this)}>
+                    <a target="_blank" href= {"/characters/" + this.state.charLeft.name} id="fttCharLeftLink"></a>
+                </div>
+                
+                <div className="fttCharArea fttRight" onMouseEnter={this.focus.bind(this)}>
+                    <a target="_blank" href= {"/characters/" + this.state.charRight.name} id="fttCharRightLink"></a>
+                </div>
 
                 <div id="fttAntagonists">
                     <img src="ForTheThrone/img/iron-throne.png" id="fttThrone" />
@@ -123,8 +129,11 @@ export default class ForTheThrone extends Component {
                         <h1 className="center">...or you die</h1>
                     </div>
 
+                    
                     <div className="fttCharContainer fttLeft">
-                        <img src={this.state.charLeft.img} id="fttCharLeftImg" className="fttCharImg fttLeft" />
+                        <a target="_blank" href= {"/characters/" + this.state.charLeft.name}>
+                            <img src={this.state.charLeft.img} id="fttCharLeftImg" className="fttCharImg fttLeft"/>
+                        </a>
                         <div className="fttCharTombstone fttCharLeftTombstone fttTombstonePlod">
                             {this.state.charLeftPlod.plod < 100 ? parseInt(this.state.charLeftPlod.plod) : 100} %
                         </div>
@@ -135,8 +144,12 @@ export default class ForTheThrone extends Component {
                             <i>"{this.state.charLeft.quote}"</i>
                         </div>
                     </div>
+                   
+
                     <div className="fttCharContainer fttRight">
-                        <img src={this.state.charRight.img} id="fttCharRightImg" className="fttCharImg fttRight"/>
+                        <a target="_blank" href= {"/characters/" + this.state.charRight.name}>
+                            <img src={this.state.charRight.img} id="fttCharRightImg" className="fttCharImg fttRight"/>
+                        </a>
                         <div className="fttCharTombstone fttCharRightTombstone fttTombstonePlod">
                             {this.state.charRightPlod.plod < 100 ? parseInt(this.state.charRightPlod.plod) : 100} %
                         </div>

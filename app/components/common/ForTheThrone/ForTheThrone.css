@@ -1,3 +1,19 @@
+#fttCharLeftLink{
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+    height: 85%;
+    width: 320px;
+}
+
+#fttCharRightLink{
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+    height: 85%;
+    width: 320px;
+}
+
 #fttContainer {
     position: relative;
 
@@ -44,7 +60,7 @@ p {
     position: absolute;
     bottom: 0;
     top: 0;
-    width: 50%;
+    width: 30%;
 }
 
 .fttLeft {
@@ -243,6 +259,10 @@ p {
 
 /* ANIMATIONS */
 @media (min-width: 1170px) {
+    #fttAntagonists * {
+        transition: .5s all 0.3s;
+    }
+
     .fttCharArea.fttLeft:hover ~ #fttAntagonists #fttCharRightImg, 
     .fttCharArea.fttRight:hover ~ #fttAntagonists #fttCharLeftImg {
         height: 350px;
@@ -250,27 +270,23 @@ p {
         transition-duration: 0.2s;
     }
 
+/* Left Character */
     .fttCharArea.fttLeft:hover ~ #fttAntagonists #fttCharLeftImg {
         left: 140px;
-        bottom: 0;
-        height: 600px;
-    }
-
-    .fttCharArea.fttRight:hover ~ #fttAntagonists #fttCharRightImg {
-        right: 140px;
-        bottom: 0;
-        height: 600px;
-    }
-
-    .fttCharArea.fttLeft:hover ~ #fttAntagonists #fttCharLeftImg {
-        left: 140px;
-        bottom: 0;
+        bottom: 0px;
         height: 600px;
     }
 
     .fttCharArea.fttLeft:hover ~ #fttAntagonists #fttThrone{
         margin-left: 0;
         left: 100px;
+        bottom: 0;
+        height: 600px;
+    }
+
+/* Right Character */
+    .fttCharArea.fttRight:hover ~ #fttAntagonists #fttCharRightImg {
+        right: 140px;
         bottom: 0;
         height: 600px;
     }
