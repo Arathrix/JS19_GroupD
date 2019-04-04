@@ -4,12 +4,6 @@
   },
   "api": {
     "https": true,
-    "host": "api.got.show",
-    "port": "443",
-    "prefix": "/api/"
-  },
-  "apiNew": {
-    "https": true,
     "host": "gotdata.northeurope.cloudapp.azure.com",
     "port": "443",
     "prefix": "/api/"
@@ -41,7 +35,7 @@
   "gotsent": {
     "_comment": "More info https://www.npmjs.com/package/gotsentimental",
     "mongodb": {
-      "uri": "mongodb://heroku_cndt449s:n6fu9l528a595js1cdl5vbgk18@ds049864.mlab.com:49864/heroku_cndt449"
+      "uri": "mongodb://<user>:<pass>@<server>/<db>"
     },
     "api": {
       "https": true,
@@ -50,10 +44,10 @@
       "prefix": "/api/"
     },
     "twitter": {
-      "access_token": "1102551131820044288-8Ao1QIdjeHWd0owQ5NclMtkFA1nABN",
-      "access_token_secret": "aEEqHf1axXXBpoKnojPrXl7kMf3yseehX9iInzrECv9hB",
-      "consumer_key": "xLZfN7LGSyrDKLrKSuSZ8kGIJ",
-      "consumer_secret": "uVvAk44CgvBvwMrYzC7daIh8BSTXpjMY3u8GJTGiKlW5DqS4IY"
+      "access_token": "",
+      "access_token_secret": "",
+      "consumer_key": "",
+      "consumer_secret": ""
     }
   }
 }
