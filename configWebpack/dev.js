@@ -6,6 +6,7 @@ var NoErrorsPlugin = new webpack.NoErrorsPlugin();
 
 config.module.loaders.push({
   test: /\.css$/,
+  exclude: /node_modules/,
   loader: 'style-loader!css!postcss!csslint'
 });
 
