@@ -21,10 +21,10 @@ export default class CharacterList extends Component {
     return (
       <div>
         <Row>
-          <Col md={8} mdOffset={2}>
+          <Col md={10} mdOffset={1}>
             <div> {
               this.props.data.map(function (character) {
-                let check = !character.dateOfDeath && character.plod;
+                let check = !character.death && character.plod;
                 let plod = (check) ? ''+parseInt(character.plod)+'%': 'DEAD';
                 let plodCropperSize = (check) ? parseInt(character.plod)/100 * 50 : 50;
                 
