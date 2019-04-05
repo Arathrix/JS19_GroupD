@@ -223,11 +223,12 @@ title {
 }
 
 .plodOuterContainer .subtitle{
+	display: block;
 	color: #bbb;
 	font-size: 1em;
 	font-family: 'Cinzel', Sans;
-	margin-top: -4px;
-	margin-bottom: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
 	font-weight: normal;
 }
 
@@ -254,7 +255,7 @@ title {
 	width: 100%;
 	opacity: 1;
 	transition-duration: 0.4s;
-	min-height: 380px;
+	min-height: 420px;
 }
 
 .plodBookContainer.plodContainerHidden {
@@ -349,4 +350,10 @@ hr {
 	box-sizing: border-box;
 	background: transparent;
 	transition-duration: 0.4s;
+}
+
+.sorryNoData {
+	padding-top: 50px;
+	font-size: 1.5em;
+	text-align: center;
 }
