@@ -1,42 +1,68 @@
-# JS16_ProjectF [![Build Status](https://travis-ci.org/Rostlab/JS16_ProjectF.svg?branch=react)](https://travis-ci.org/Rostlab/JS16_ProjectF) [![Code Climate](https://codeclimate.com/github/Rostlab/JS16_ProjectF/badges/gpa.svg)](https://codeclimate.com/github/Rostlab/JS16_ProjectF) [![Codacy Badge](https://api.codacy.com/project/badge/grade/cee88a696a9749aa98ea9987ba91b926)](https://www.codacy.com/app/mail_25/JS16_ProjectF)
-In this project we will build a web portal for our GoT data analysis and visualization system. The website will integrate all the apps created in projects B-D with the help of the integration team assigned to Project E.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Production:
-https://got.show
+## Available Scripts
 
-# Developer information
-We're using webpack: https://github.com/webpack/webpack
+In the project directory, you can run:
 
-## Requirements:
+### `npm start`
 
-**Please make a config.json in folder config and set up your setting**
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-1. Duplicate the config.default.json to config.json
-2. Add twitter access keys to gotsent in the config
-3. Add mongodb access url to gotsent.mongo.uri in the config (ask @yashha for an access)
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-`gotsent.mongo.uri = "mongodb://<user>:<pass>@<server>/<db>"`
+### `npm test`
 
-## Development
-* `npm install`
-* `npm start`
-* Open: http://localhost:8080/
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Build manually
-* `npm install`
-* `npm run build`
+### `npm run build`
 
-## serve files
-* `npm install`
-* `npm run serve`
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Deploy to staging/testing
-We use a dedicated 'staging' branch which is automagically deployed to https://got-stats.herokuapp.com/.
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-**How To Deploy On Staging**:
-* git checkout staging
-* git pull
-* git pull origin develop
-* git push
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-**NEVER EVER PUSH COMMITS DIRECTLY TO 'staging' !11!!** :bomb:
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

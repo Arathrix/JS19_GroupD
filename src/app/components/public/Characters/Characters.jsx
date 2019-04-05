@@ -1,0 +1,292 @@
+/*eslint no-undef: 0*/
+
+import React from 'react';
+let {Component} = React;
+import $ from 'jquery';
+import './Characters.css';
+import { Row, Col, Container, ProgressBar } from 'react-bootstrap';
+
+import MapComp from '../../common/MapComp/MapComp.jsx';
+import Store from '../../../stores/CharactersStore';
+import Actions from '../../../actions/CharactersActions';
+// import CharacterDetailsMedia from '../../common/CharacterDetails/CharacterDetailsMedia.jsx';  todo
+// import CharacterDetailsStats from '../../common/CharacterDetails/CharacterDetailsStats.jsx'; todo
+import SentimentStore from '../../../stores/TwitterSentimentsStore';
+
+import CharacterPlodDisplay from '../../common/CharacterPlodDisplay/CharacterPlodDisplay';
+import tombstone from './rip_tombstone.png';
+import DeadCharacter from './DeadCharacter';
+
+import window from 'global';
+
+import PropTypes from 'prop-types';
+
+export default class Character extends Component {
+
+    constructor (props) {
+        super(props);
+        console.log(this.props);
+        this.SHOW_YEAR = 305;
+        this.BOOK_YEAR = 300;
+        this.animating = false;
+        let character = Store.getCharacter();
+
+        this.state = {
+            character: character,
+
+            plodShow: 0,
+            plodBook: 0,
+
+            plodByYearShow: [],
+            plodByYearBook: [],
+
+            plodTextShow: '',
+            plodTextBook: ''
+        };
+        this._onChange = this._onChange.bind(this);
+    }
+
+    componentWillMount (){
+        Store.addChangeListener(this._onChange);
+    }
+
+    componentDidMount() {
+        Actions.loadCharacter(decodeURIComponent(this.props.match.params.id));
+        //SentimentActions.loadCharacterSentiment(decodeURIComponent(this.props.match.params.id));
+    }
+
+    componentWillUnmount(){
+        Store.removeChangeListener(this._onChange);
+    }
+
+    _onChange() {
+        let character = Store.getCharacter();
+        
+        this.setState({
+            character: character
+        });
+
+        // TV show PLOD data
+        let checkShow = false;
+        let showLongevity = [];
+        if (character.hasShow) {
+            checkShow = character.show.alive;
+
+            let showLongevityB = character.show.longevityB;
+            let showLongevityStartB = parseInt(character.show.longevityStartB);
+
+            let start = this.SHOW_YEAR - showLongevityStartB;
+            showLongevity = showLongevityB.splice(start, start + 21);
+        }
+
+        // book PLOD Data
+        let checkBook = false;
+        let bookLongevity = [];
+        if (character.hasBook) {
+            checkBook = character.book.alive;
+
+            let bookLongevityB = character.book.longevityB;
+            let bookLongevityStartB = parseInt(character.book.longevityStartB);
+
+            let start = this.BOOK_YEAR - bookLongevityStartB;
+            bookLongevity = bookLongevityB.splice(start, start + 21);
+        }
+
+        this.setState({
+            // temporary dummy data - TODO: remove
+            plodShow:       checkShow ? Math.round(character.show.plodB * 100) : 100,
+            plodByYearShow: checkShow ? showLongevity : [],
+            plodTextShow:   checkShow ? '%(percent)s%' : 'D E A D',
+
+            // Book data
+            plodBook:       checkBook ? Math.round(character.book.plodB * 100) : 100,
+            plodByYearBook: checkBook ? bookLongevity : [],
+            plodTextBook:   checkBook ? '%(percent)s%' : 'D E A D',
+
+            character: character,
+            sentiment: SentimentStore.getCharacterSentiment() || { positive: 0, negative: 0}
+        });
+        
+        // TODO: remove
+        console.log(this.state); /*eslint no-console:0,no-undef:0*/
+    }
+
+    togglePlodDisplay() {
+        if (this.animating) {
+            return;
+        }
+
+        this.animating = true;
+        var bookContainer = $(".plodBookContainer");
+        var characterShowImg = $(".character-show-img");
+        var disclaimer = $('.disclaimer');
+        if (bookContainer.hasClass('plodContainerHidden')) {
+            bookContainer.removeClass("plodContainerZIndexLower").removeClass("plodContainerHidden");
+            characterShowImg.addClass("hiddenImg");
+            disclaimer.addClass('hiddenImg');
+        } else {
+            bookContainer.addClass("plodContainerHidden");
+            characterShowImg.removeClass("hiddenImg");
+            disclaimer.removeClass('hiddenImg');
+            window.setTimeout(() => {
+                $(".plodBookContainer").addClass("plodContainerZIndexLower");
+            }, 400);
+        }
+
+        let button = $(".togglePlodDisplayButtonBackground");
+        if (button.hasClass("active")) {
+            button.removeClass("active").animate({
+                "left": "0",
+                "backgroundColor": "#7a7a7a"
+            }, 200);
+        } else {
+            button.addClass("active").animate({
+                "left": "50%",
+                "backgroundColor": "#5A180C"
+            }, 200);
+        }
+
+        window.setTimeout(function() {
+            this.animating = false;
+        }.bind(this), 400);
+    }
+
+    render() {
+        var imgBook = (this.state.character.book && this.state.character.book.image) ? this.state.character.book.image : "/images/placeholder-male.png";
+        var imgShow = (this.state.character.show && this.state.character.show.image) ? this.state.character.show.image : false;
+
+        return (
+          <Container id="character-page-container">
+            <div className="character-container">
+                <Row>
+                    <div className="character-header">
+                        <div className="character-name-container">
+                            <div className="character-name-background"></div>
+                            <Col md={{span:9,offset:3}} className="character-name">
+                                <div className="u-inlineBlock"><h1>{this.state.character.name}</h1></div>
+                            </Col>
+                        </div>
+                    </div>
+                </Row>
+                <Row className="character-intro" fluid >
+                    <Col md={3}>
+                        <div className="character-photo">
+                            <img src={imgBook}/>
+                            {imgShow !== false ? 
+                                <img className="character-show-img" src={imgShow}/> : ''}
+                            <div className="disclaimer">© 2019 Home Box Office, Inc. / Sky All rights reserved.</div>
+                        </div>
+                    </Col>
+                    <Col md={9}>
+                        <div className="togglePlodDisplayButton" onClick={this.togglePlodDisplay.bind(this)}>
+                            <div className="togglePlodDisplayButtonBackground"></div>
+                            <div className="togglePlodDisplayButtonOption">Show</div>
+                            <div className="togglePlodDisplayButtonOption">Book</div>
+                        </div>
+                        <div className="plodOuterContainer">
+                            { this.state.plodShow < 100 && this.state.character.show && this.state.character.show.alive == true ?
+                                <div className="plodShowContainer">
+                                    <h3>Our Predictions</h3>
+                                    <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>TV show <i className="fas fa-external-link-alt"></i></a>
+                                    <p>The current year in the TV show is probably {this.SHOW_YEAR} AC.
+                                        <br />{this.state.character.name}'s <b>Likelihood to Survive</b> between the years 305 and 325 AC is:</p>
+                                    <div className="plodContainer">
+                                        <CharacterPlodDisplay plodByYear={this.state.plodByYearShow} startingYear={305}/>
+                                    </div>
+                                    <p>{this.state.character.name}'s <b>Predicted Likelihood of Death</b> in season 8 is:</p>
+                                    <div className="plodContainer">
+                                        <ProgressBar now={this.state.plodShow} label={this.state.plodTextShow} />
+                                        <img src={tombstone} />
+                                    </div>
+                                </div> 
+                                : 
+                                <div className="plodShowContainer">
+                                    <DeadCharacter name={this.state.character.name} 
+                                                   deathText={this.state.character.show && this.state.character.show.death ? this.state.character.show.death + ' AC' : 'D E A D'} 
+                                                   mediumText="TV show"/>
+                                </div>
+                            }
+
+                            { this.state.plodBook < 100 && this.state.character.book && !this.state.character.book.dateOfDeath ?
+                                <div className="plodBookContainer plodContainerHidden plodContainerZIndexLower">
+                                    <h3>Our Predictions</h3>
+                                    <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>Books <i className="fas fa-external-link-alt"></i></a>
+                                    <p>The current year in the Books is probably {this.BOOK_YEAR} AC.
+                                        <br />{this.state.character.name}'s <b>Likelihood to Survive</b> between the years 305 and 325 AC is:</p>
+                                    <div className="plodContainer">
+                                        <CharacterPlodDisplay plodByYear={this.state.plodByYearBook} startingYear={300}/>
+                                    </div>
+                                    <p>{this.state.character.name}'s <b>Predicted Likelihood of Death</b> in <i>'the Winds of Winter'</i> is:</p>
+                                    <div className="plodContainer">
+                                        <ProgressBar now={this.state.plodBook} label={this.state.plodTextBook} />
+                                        <img src={tombstone} />
+                                    </div>
+                                </div>
+                                : 
+                                <div className="plodBookContainer plodContainerHidden plodContainerZIndexLower">
+                                    <DeadCharacter name={this.state.character.name} deathText={this.state.character.book && this.state.character.book.death + 'AC'} mediumText="books"/>
+                                </div>
+                            }
+                        </div>
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col md={12}>
+                        <div className="sectionHeader">
+                            <h3>Comparison</h3>
+                            <h4>between the&nbsp;books and&nbsp;the TV&nbsp;show</h4>
+                        </div>
+                        <hr />
+                        {/* <CharacterDetailsMedia data={this.state} character={this.state.character}/> todo */}
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col md={12}>
+                        <div className="sectionHeader">
+                            <h3>Interesting Stats</h3>
+                            <h4>about {this.state.character.name}</h4>
+                        </div>
+                        <hr />
+                        {/* <CharacterDetailsStats data={this.state} /> */}
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col md={12}>
+                        <div className="sectionHeader">
+                            <h3 style={{marginBottom: "35px"}}>Follow {this.state.character.name} in the books</h3>
+                        </div>
+                        <hr />
+                        <div id="characterMap">
+                            <MapComp character={[this.props.match.params.id]} />
+                        </div>
+                    </Col>
+                </Row>
+                <br />
+                <Row>
+                    <Col md={12}>
+                        <hr />
+                        <div className="sectionHeader">
+                            <h3>Machine Learning</h3>
+                            <h4>predicting life and death in Westeros</h4>
+                        </div>
+                        <hr />
+                        <div className="card">
+                            <h3>Character Death & Longevity</h3>
+                            <p>Our in-house developed machine learning algorithm predicts
+                                two different values: <b>predicted likelihood of death</b> in season 8 of the TV show or the next book, and the <b>character longevity</b> prediction 
+                                between the years 300 to 320 AC.</p>
+                            <p>We do this based on various features that we extracted for each character from the first five books of the <i>A&nbsp;Song of&nbsp;Ice
+                                and&nbsp;Fire series</i> by George R.&nbsp;R. Martin and the first seven seasons of the TV show <i>Game of&nbsp;Thrones</i> by HBO.</p>
+                            <a href="/machine-learning-algorithm-predicts-death-game-of-thrones" className="readMore">Read more</a>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+          </Container>
+        );
+    }
+}
+Character.propTypes = { params: PropTypes.object };
