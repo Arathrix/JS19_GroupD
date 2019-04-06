@@ -14,10 +14,9 @@ import CharacterDetailsStats from '../../common/CharacterDetails/CharacterDetail
 import SentimentStore from '../../../stores/TwitterSentimentsStore';
 
 import CharacterPlodDisplay from '../../common/CharacterPlodDisplay/CharacterPlodDisplay';
-import tombstone from './rip_tombstone.png';
 import DeadCharacter from './DeadCharacter';
 
-import window from 'global';
+import * as Img from './img';
 
 export default class Character extends Component {
 
@@ -59,7 +58,7 @@ export default class Character extends Component {
 
     _onChange() {
         let character = Store.getCharacter();
-        
+
         this.setState({
             character: character
         });
@@ -188,7 +187,7 @@ export default class Character extends Component {
                                     <p>{this.state.character.name}'s <b>Predicted Likelihood of Death</b> in season 8 is:</p>
                                     <div className="plodContainer">
                                         <ProgressBar now={this.state.plodShow} label={this.state.plodTextShow} />
-                                        <img src={tombstone} />
+                                        <img src={Img['RipTombstone']} />
                                     </div>
                                 </div> 
                                 : this.state.character.hasShow && !this.state.character.show.alive ?
@@ -217,7 +216,7 @@ export default class Character extends Component {
                                     <p>{this.state.character.name}'s <b>Predicted Likelihood of Death</b> in <i>'the Winds of Winter'</i> is:</p>
                                     <div className="plodContainer">
                                         <ProgressBar now={this.state.plodBook} label={this.state.plodTextBook} />
-                                        <img src={tombstone} />
+                                        <img src={Img['RipTombstone']} />
                                     </div>
                                 </div>
                                 : this.state.character.hasBook && !this.state.character.book.alive ?
@@ -284,7 +283,7 @@ export default class Character extends Component {
                         <div className="card">
                             <h3>Character Death & Longevity</h3>
                             <p>Our in-house developed machine learning algorithm predicts
-                                two different values: <b>predicted likelihood of death</b> in season 8 of the TV show or the next book, and the <b>character longevity</b> prediction 
+                                two different values: <b>predicted likelihood of death</b> in season 8 of the TV show or the next book, and the <b>character longevity</b> prediction
                                 between the years 300 to 320 AC.</p>
                             <p>We do this based on various features that we extracted for each character from the first five books of the <i>A&nbsp;Song of&nbsp;Ice
                                 and&nbsp;Fire series</i> by George R.&nbsp;R. Martin and the first seven seasons of the TV show <i>Game of&nbsp;Thrones</i> by HBO.</p>

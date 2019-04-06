@@ -1,4 +1,4 @@
-engines: 
+engines:
   eslint:
     enabled: true
   csslint:
