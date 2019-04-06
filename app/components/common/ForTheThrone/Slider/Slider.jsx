@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import antagonistCharacters from 'json!../antagonistCharacters.json';
 import { Slide } from 'react-slideshow-image';
 
+import Img from '../img';
 
 const properties = {
     transitionDuration: 500,
@@ -53,7 +54,7 @@ export default class Slider extends Component {
                                 elem.map(function(e,i){
                                     return (
                                         <a target="_blank" className="fttCharacter" href={"/characters/" + e.name} key={i}>
-                                             <img src={"/ForTheThrone/img/" + e.key + "Small.png"} />
+                                             <img src={Img[e.key+"Small"]} />
                                             <div>{e.name}</div>
                                         </a>
                                     );
