@@ -14,12 +14,9 @@ app.get('/sitemap.xml', function(req,res) {
   res.sendFile(path.join(__dirname, '../sitemap.xml'))
 });
 
-<<<<<<< HEAD
-=======
 // app.use('/d5', d5);
 // app.use('/d4', d4);
 app.use('/plodC',plodC);
->>>>>>> develop
 app.use('/wikirequest', wikirequest);
 
 app.use(express.static(path.join(__dirname, '../static')));
