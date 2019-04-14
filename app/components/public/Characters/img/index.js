@@ -7,5 +7,5 @@ export{
   PlaceholderFemale,
   PlaceholderMale,
   RipTombstone,
-  RipTombstoneTransparent,
+  RipTombstoneTransparent
 }

@@ -83,6 +83,10 @@ var CharactersStore = assign({}, EventEmitter.prototype, {
     const sortedCharacters = sortCharacters(filteredCharacters, sort);
     return sortedCharacters.slice(start, end);
   },
+  
+  getAllCharacters: function() {
+    return _characters;
+  },
 
   getShowCharacters: function() {
     return _showCharacters;

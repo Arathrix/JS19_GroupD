@@ -75,6 +75,7 @@ var CharactersActions = {
             });
         });
     },
+    
     loadCharacter: function(name) {
         var character = {
             hasShow: false,

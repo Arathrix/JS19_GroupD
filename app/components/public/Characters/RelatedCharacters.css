@@ -1,0 +1,59 @@
+
+.relatedCharactersContent {
+    width: 100%;
+    padding: 0;
+
+    position: relative;
+    text-align: center;
+}
+
+.relatedCharacter {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    box-sizing: border-box;
+    border-radius: 45px;
+
+    cursor: pointer;
+}
+
+.relatedCharacter:hover {
+    background: #353535;
+    transition-duration: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    user-select: none;
+}
+
+.relatedCharacter .imageContainer {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.relatedCharacter .imageContainer img {
+    width: 70px;
+}
+
+.relatedCharacter .characterNameContainer {
+    text-align: left;
+    width: calc(100% - 70px);
+    height: 70px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.relatedCharacter .characterName {
+    font-size: 1.1em;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    top: 50%;
+    vertical-align: top;
+    transform: translateY(-50%);
+}
