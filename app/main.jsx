@@ -5,11 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'file?name=favicon.png!./favicon.png';
 import { Router, Route, IndexRoute } from 'react-router';
+// import Config from 'json!../config/config.json';
 
 import 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-
 
 import App from './components/app/App.jsx';
 import About from './components/public/About/About.jsx';
@@ -36,13 +36,15 @@ browserHistory.listen(location => {
     ga('send', 'pageview');
 });
 
+function scrollBack() {
+  history.scrollRestoration = 'manual';
+  if (!window.location.href.includes("/characters/?")) {
+    window.scrollTo(0, 0);
+  }
+}
+
 ReactDOM.render(
-  <Router onUpdate={() => {
-    history.scrollRestoration = 'manual';
-    if (!window.location.href.includes("/characters/?")) {
-      window.scrollTo(0, 0);
-    }
-  }} history={browserHistory}>
+  <Router onUpdate={scrollBack} history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Start}/>
       <Route path="/ranking" component={Ranking}/>

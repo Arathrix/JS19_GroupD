@@ -264,9 +264,9 @@ export default class Character extends Component {
                         <CharacterDetailsStats data={this.state} />
                     </Col>
                 </Row>}
-                <hr />
                 <Row>
                     <Col md={12}>
+                        <hr />
                         <div className="sectionHeader">
                             <h3 style={{marginBottom: "35px"}}>Follow {this.state.character.name} in the books</h3>
                         </div>

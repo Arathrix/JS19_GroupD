@@ -6,7 +6,7 @@ import Store from '../../../stores/CharactersStore';
 import Actions from '../../../actions/CharactersActions';
 
 export default class PlodTop5 extends Component {
-  
+
   constructor(props) {
     super(props);
 
@@ -34,27 +34,6 @@ export default class PlodTop5 extends Component {
     });
   }
 
-  getHardcodedPlodTop5() {
-    return [
-      {
-        name: 'Euron Greyjoy',
-        plod: '99.9'
-      }, {
-        name: 'Sansa Stark',
-        plod: '99.7'
-      }, {
-        name: 'Bronn',
-        plod: '99.3'
-      }, {
-        name: 'Meera',
-        plod: '99.2'
-      }, {
-        name: 'Podrick Payne',
-        plod: '99.2'
-      }
-    ];
-  }
-
   getRanking() {
     if (this.state.characters.length > 0) {
       let characters = this.state.characters;
@@ -63,11 +42,9 @@ export default class PlodTop5 extends Component {
       if (characters.length >= 5) {
         for (let i = characters.length - 1; i >= 0; i--) {
           let char = characters[i];
-
           if (char.pagerank.rank > 400) {
             ranking.push({name: char.name, plod: (100 * char.plodB).toFixed(1)});
           }
-
           if (ranking.length === 5) {
             break;
           }
@@ -76,7 +53,7 @@ export default class PlodTop5 extends Component {
 
       return ranking;
     } else {
-      return this.getHardcodedPlodTop5();
+      return [];
     }
   }
 
@@ -90,9 +67,8 @@ export default class PlodTop5 extends Component {
               return <tr key={char.name}>
               <td>
                 <h4>
-                  <Link to={'/characters/' + char.name}>
+                  <Link to={'/characters/' + char.name }>
                     {char.name}
-                    
                   </Link>
                 </h4>
               </td>
@@ -103,7 +79,7 @@ export default class PlodTop5 extends Component {
         </tbody>
       </table>
       <p className="see-more">
-        <Link to={'/characters/?search=&page=1&sort=plod&order=-1'}>See more</Link>
+        <Link to={'/characters/?match=&page=1&sort=plod&order=-1&show=true'}>See more</Link>
       </p>
     </div>);
   }

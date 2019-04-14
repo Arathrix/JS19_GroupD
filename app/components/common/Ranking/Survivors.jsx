@@ -53,32 +53,11 @@ export default class Ranking extends Component {
     });
   }
 
-  getHardcodedSurvivors() {
-    return [
-      {
-        name: 'Edmure Tully',
-        plod: '0.8'
-      }, {
-        name: 'Robin Arryn',
-        plod: '1.2'
-      }, {
-        name: 'Daenerys Targaryen',
-        plod: '3.6'
-      }, {
-        name: 'Gilly',
-        plod: '4.0'
-      }, {
-        name: 'Jon Snow',
-        plod: '5.2'
-      }
-    ];
-  }
-
   getRanking() {
     if (this.state.ranking.length > 0) {
       return this.state.ranking;
     } else {
-      return this.getHardcodedSurvivors();
+      return [];
     }
   }
 
@@ -94,7 +73,6 @@ export default class Ranking extends Component {
               <h4>
                 <Link to={'/characters/' + char.name}>
                   {char.name}
-                  
                 </Link>
               </h4>
             </td>
@@ -105,7 +83,7 @@ export default class Ranking extends Component {
         </tbody>
       </table>
       <p className="see-more">
-        <Link to={'/characters/?search=&page=1&sort=plod&order=1'}>See more</Link>
+        <Link to={'/characters/?match=&page=1&sort=plod&order=1&show=true'}>See more</Link>
       </p>
     </div>);
   }
