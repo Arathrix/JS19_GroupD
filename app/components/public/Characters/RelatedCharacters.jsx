@@ -150,7 +150,7 @@ export default class RelatedCharacters extends Component {
             let relatedShown = potential.slice(0, 4);
             content = <div>{
                 relatedShown.map((value, index) => {
-                    return <span key={index} onClick={() => {
+                    return <span key={index} className={index > 2 ? "hideOnMobile" : ""} onClick={() => {
                         let character = {
                             name: "",
                             hasShow: false,
