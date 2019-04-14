@@ -57,3 +57,21 @@
     vertical-align: top;
     transform: translateY(-50%);
 }
+
+@media (max-width: 700px) {
+    .relatedCharacter .characterNameContainer {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .hideOnMobile  {
+        display: none;
+    }
+
+    .relatedCharacter {
+        width: 33%;
+    }
+}
