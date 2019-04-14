@@ -14,6 +14,7 @@ import CharacterDetailsStats from '../../common/CharacterDetails/CharacterDetail
 
 import CharacterPlodDisplay from '../../common/CharacterPlodDisplay/CharacterPlodDisplay';
 import DeadCharacter from './DeadCharacter';
+import RelatedCharacters from './RelatedCharacters';
 
 import * as Img from './img';
 
@@ -34,7 +35,9 @@ export default class Character extends Component {
         };
 
         this.state = {
+            render: 0,
             character: character,
+            hasLoaded: false,
 
             plodShow: 0,
             plodBook: 0,
@@ -57,12 +60,30 @@ export default class Character extends Component {
         Actions.loadCharacter(decodeURIComponent(this.props.params.id));
     }
 
+    componentDidUpdate() {
+        if (this.state.character.name !== this.props.params.id) {
+            Actions.loadCharacter(decodeURIComponent(this.props.params.id));
+        }
+    }
+
     componentWillUnmount(){
         Store.removeChangeListener(this._onChange);
     }
 
     _onChange() {
         let character = Store.getCharacter();
+
+        if (this.state.hasLoaded 
+            && ((this.state.character.hasBook && character.hasBook && this.state.character.book.name == character.book.name)
+            || (this.state.character.hasShow && character.hasShow && this.state.character.show.name == character.show.name))
+        ) {
+            console.log("skip");
+            this.setState({
+                render: this.state.render + 1
+            });
+            return;
+        }
+
         this.setState({
             character: character
         });
@@ -96,6 +117,8 @@ export default class Character extends Component {
         }
 
         this.setState({
+            hasLoaded: true,
+
             // Show data
             plodShow:       checkShow ? Math.round(character.show.plodB * 100) : 100,
             plodByYearShow: checkShow ? showLongevity : [],
@@ -239,6 +262,11 @@ export default class Character extends Component {
                                 </div>
                             }
                         </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <RelatedCharacters character={this.state.character}/>
                     </Col>
                 </Row>
                 {!this.state.character.hasShow && this.state.character.hasBook ? '' :
