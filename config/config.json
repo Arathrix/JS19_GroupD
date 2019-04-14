@@ -1,10 +1,13 @@
 {
   "google_analytics": {
-    "key": "xxx"
+    "key": ""
   },
   "api": {
     "https": true,
-    "host": "gotdata.northeurope.cloudapp.azure.com",
+    "host": "api.got.show",
+    "hostOld": "api.got.show",
+    "hostTiles": "tiles.got.show",
+    "wiki": "awoiaf.westeros.org",
     "port": "443",
     "prefix": "/api/"
   },
