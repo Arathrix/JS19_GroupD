@@ -9,6 +9,7 @@ import ForTheThrone from '../../common/ForTheThrone/ForTheThrone.jsx';
 import PlodTop5 from '../../common/Ranking/PlodTop5';
 import Survivors from '../../common/Ranking/Survivors';
 import MapComp from '../../common/MapComp/MapComp.jsx';
+import Outcomes from '../../common/OutcomesSeason8/Outcomes.jsx';
 
 export default class Start extends Component {
 
@@ -40,8 +41,19 @@ export default class Start extends Component {
     return (
       <div id="home">
         <ForTheThrone charLeft={this.state.charLeft} charRight={this.state.charRight} />
-
         <Grid className="content">
+          <Row>
+            <Col md={12}>
+                <Outcomes />
+            </Col>
+          </Row>  
+          <Row>
+            <Col>
+              <hr />
+                <h3 className="center">Rankings</h3>
+              <hr />
+            </Col>
+          </Row>
           <Row >
             <Col md={6}>
               <div className="card">
@@ -65,7 +77,7 @@ export default class Start extends Component {
             <Col md={12} >
               <div className="center">{this.state.charLeft.name}'s and {this.state.charRight.name}'s location history on a map:</div><br />
               <MapComp character={[this.state.charLeft.name, this.state.charRight.name]}/>
-              
+
             </Col>
           </Row>
         </Grid>

@@ -27,6 +27,7 @@ import Site404 from './components/public/404/404.jsx';
 import Imprint from './components/public/Imprint/Imprint.jsx';
 import PrivacyPolicy from './components/public/PrivacyPolicy/PrivacyPolicy.jsx';
 import PlodDescription from './components/public/PlodDescription/PlodDescription.jsx';
+import OutcomesTable from './components/common/OutcomesSeason8/OutcomesTable.jsx';
 
 import ga from 'ga-react-router';
 import { browserHistory } from 'react-router';
@@ -38,7 +39,7 @@ browserHistory.listen(location => {
 
 function scrollBack() {
   history.scrollRestoration = 'manual';
-  if (!window.location.href.includes("/characters/?")) {
+  if (!window.location.href.includes("/characters?")||window.location.href.includes("page=1")) {
     window.scrollTo(0, 0);
   }
 }
@@ -61,6 +62,7 @@ ReactDOM.render(
         <IndexRoute component={CharacterListPage}/>
         <Route path="/characters/:id" component={Characters}/>
       </Route>
+      <Route path="/dead-characters-table" component={OutcomesTable}/>
     </Route>
     <Route path="/map" component={Map}/>
     <Route path="*" component={Site404}/>
