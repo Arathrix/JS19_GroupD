@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import antagonistCharacters from 'json!../../../public/Start/antagonistCharacters.json';
 import { Slide } from 'react-slideshow-image';
+import { Link } from 'react-router';
 import * as Img from "../img";
 
 const properties = {
@@ -53,10 +54,10 @@ export default class Slider extends Component {
                                 <div>{
                                 elem.map(function(e,i){
                                     return (
-                                        <a className="fttCharacter" href={"/characters/" + e.name} key={i}>
+                                        <Link className="fttCharacter" to={"/characters/" + e.name} key={i}>
                                              <img src={Img[e.key + "Small"]} />
                                             <div>{e.name}</div>
-                                        </a>
+                                        </Link>
                                     );
                                 })
                             }</div>
