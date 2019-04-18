@@ -76,6 +76,34 @@ var CharactersActions = {
         });
     },
     
+    loadCharacterGeneral(name) {
+        var character = {
+            hasShow: false,
+            hasBook: false,
+            book: {},
+            show: {}
+        };
+        
+        var that = this;
+        Api.get('general/characters/' + name).then(function(response){
+            if (response.hasOwnProperty('success') && response.success == 1) {
+                if (response.show != null) {
+                    character.hasShow = true;
+                    character.show = response.show;
+                }
+
+                if (response.book != null) {
+                    character.hasBook = true;
+                    character.book = response.book;
+                }
+            }
+
+            that.dispatchCharacter(character);
+        }, function(fail) {
+            that.dispatchCharacter(character);
+        });
+    },
+
     loadCharacter: function(name) {
         var character = {
             hasShow: false,

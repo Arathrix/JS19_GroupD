@@ -89,3 +89,13 @@
     width: 100%;
     left: 0;
 }
+
+@media (max-width: 500px) {
+    .plodYear {
+        margin-right: 3px;
+    }
+    
+    .plodYearBg, .plodYearScale {
+        width: calc((100% - 40px)/21 - 3px);
+    }
+}

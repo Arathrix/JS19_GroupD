@@ -57,12 +57,12 @@ export default class Character extends Component {
     }
 
     componentDidMount() {
-        Actions.loadCharacter(decodeURIComponent(this.props.params.id));
+        Actions.loadCharacterGeneral(decodeURIComponent(this.props.params.id));
     }
 
     componentDidUpdate() {
         if (this.state.character.name !== this.props.params.id) {
-            Actions.loadCharacter(decodeURIComponent(this.props.params.id));
+            Actions.loadCharacterGeneral(decodeURIComponent(this.props.params.id));
         }
     }
 
@@ -77,7 +77,6 @@ export default class Character extends Component {
             && ((this.state.character.hasBook && character.hasBook && this.state.character.book.name == character.book.name)
             || (this.state.character.hasShow && character.hasShow && this.state.character.show.name == character.show.name))
         ) {
-            console.log("skip");
             this.setState({
                 render: this.state.render + 1
             });

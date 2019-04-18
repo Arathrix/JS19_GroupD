@@ -67,11 +67,16 @@
 }
 
 @media (max-width: 450px) {
-    .hideOnMobile  {
-        display: none;
+    .relatedCharacter {
+        width: calc(50% - 20px);
+        margin: 0 10px;
+        border-radius: 5px;
     }
 
-    .relatedCharacter {
-        width: 33%;
+    .relatedCharacter:hover {
+        background: transparent;
+        box-shadow: none;
+        user-select: none;
     }
+    
 }

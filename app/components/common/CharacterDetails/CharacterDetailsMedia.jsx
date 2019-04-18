@@ -277,6 +277,10 @@ export default class CharacterDetailsMedia extends Component {
         let booksAge = this.bookBirth && this.bookBirth > 200 ? (isDead && this.bookDeath ? this.bookDeath : this.BOOK_YEAR) - this.bookBirth : false;
         let showAge = this.showBirth ? (isDead && this.showDeath ? this.showDeath : this.SHOW_YEAR) - this.showBirth : false;
         let ageDiff = (booksAge && showAge) ? Math.abs(showAge - booksAge) : false;
+
+        if (booksAge < 0 || showAge < 0) {
+            return;
+        }
         
         if (!booksAge || !showAge) {
             sbAgeTitle = this.charPronounPosessive(true) + " age is a mystery";
