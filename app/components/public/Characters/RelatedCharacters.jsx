@@ -30,6 +30,10 @@ export default class RelatedCharacters extends Component {
             });
         }
 
+        if (relatedCandidates.length === 0) {
+            return [];
+        }
+
         relatedCandidates.sort((a, b) => {
             let aAliveMultiplier = a.alive ? 1000 : 1;
             let bAliveMultiplier = b.alive ? 1000 : 1;
@@ -43,9 +47,12 @@ export default class RelatedCharacters extends Component {
         let page = [];
         let size = 4;
         for (let i = 0; i < relatedCandidates.length; i++) {
-            page.push(relatedCandidates[i]);
+            // We don't really want Vala...
+            if (relatedCandidates[i].img === true && relatedCandidates[i].name != "Vala") {
+                page.push(relatedCandidates[i]);
+            }
 
-            if (page.length % size === 0) {
+            if (page.length % size === 0 && page.length > 0) {
                 pages.push(page);
                 page = [];
             }
