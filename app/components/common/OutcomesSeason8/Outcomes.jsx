@@ -82,7 +82,7 @@ export default class OutcomesSeason8 extends Component {
                     <hr />
                     <h3 className="center">How did we do?</h3>
                     <h4 className="center">Deaths in season 8 of Game of Thrones</h4>
-                    {/*<Link to="/dead-characters-table" style={{fontSize: "0.8em"}}>Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>*/}
+                    
                     <hr />
                 </div>
                 <div className="outcomesContent">
@@ -127,6 +127,7 @@ export default class OutcomesSeason8 extends Component {
                             }}>Show Spoilers</div>
                         </div>
                     </div>
+                    <Link to="/dead-characters-table">Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>
                 </div>
             </div>
         );
