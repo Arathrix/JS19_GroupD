@@ -127,7 +127,7 @@ export default class OutcomesSeason8 extends Component {
                             }}>Show Spoilers</div>
                         </div>
                     </div>
-                    <Link to="/dead-characters-table">Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>
+                    <Link to="/dead-characters-table" style={{marginTop: "10px", display: "block"}}>Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>
                 </div>
             </div>
         );

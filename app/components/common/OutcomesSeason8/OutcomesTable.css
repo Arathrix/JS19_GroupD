@@ -8,7 +8,7 @@
     max-width: 100%;
 }
 
-.characterImgContainer {
+#outcomesTableContainer .characterImgContainer {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -16,30 +16,30 @@
     overflow: hidden;
 }
 
-tr td {
+#outcomesTableContainer tr td {
     padding: 10px;
     height: 70px;
 }
 
-tr th {
+#outcomesTableContainer tr th {
     padding: 10px;
     text-align: center;
 }
 
-tr td * {
+#outcomesTableContainer tr td * {
     vertical-align: top;
 }
 
-.tmp {
+#outcomesTableContainer .tmp {
     max-width: 200px;
 }
 
-.characterImgContainer img {
+#outcomesTableContainer .characterImgContainer img {
     width: 50px;
     cursor: pointer;
 }
 
-.name {
+#outcomesTableContainer .name {
     text-align: left;
 
     display: inline-block;
@@ -51,56 +51,56 @@ tr td * {
     cursor: pointer;
 }
 
-.episodes {
+#outcomesTableContainer .episodes {
     width: 80px;
     text-align: center;
 }
 
-.tableHead {
+#outcomesTableContainer .tableHead {
     margin-top: 50px;
 }
 
-.plod {
+#outcomesTableContainer .plod {
     text-align: center;
     font-size: 1.4em;
     line-height: 50px;
     font-family: 'Cinzel Decorative', cursive;
 }
 
-.tableRow:hover {
+#outcomesTableContainer .tableRow:hover {
     background-color: #555;
 }
 
 @media (max-width: 1000px) {
-    .plod {
+    #outcomesTableContainer .plod {
         font-size: 1.1em;
         line-height: initial;
     }
 
-    .name {
+    #outcomesTableContainer .name {
         padding-left: 10px;
         font-size: 1em;
         line-height: initial;
     }
 
-    .hideOnSmall {
+    #outcomesTableContainer .hideOnSmall {
         display: none;
     }
 
-    .characterImgContainer {
+    #outcomesTableContainer .characterImgContainer {
         width: 40px;
         height: 40px;
     }
 
-    .characterImgContainer img {
+    #outcomesTableContainer .characterImgContainer img {
         width: 40px;
     }
 
-    .tableRow td {
+    #outcomesTableContainer .tableRow td {
         white-space: nowrap;
     }
 
-    .tableRow .name {
+    #outcomesTableContainer .tableRow .name {
         position: relative;
         top: calc(50% - 5px);
         transform: translateY(-50%);
@@ -109,17 +109,17 @@ tr td * {
 }
 
 @media (max-width: 780px) {
-    .tableRow .name {
+    #outcomesTableContainer .tableRow .name {
         font-size: 0.9em;
         max-width: 80px;
     }
 
-    tr td {
+    #outcomesTableContainer tr td {
         padding: 5px;
         height: 60px;
     }
     
-    tr th {
+    #outcomesTableContainer tr th {
         padding: 5px;
     }
 }
