@@ -57,12 +57,12 @@ export default class Character extends Component {
     }
 
     componentDidMount() {
-        Actions.loadCharacterGeneral(decodeURIComponent(this.props.params.id));
+        Actions.loadCharacter(decodeURIComponent(this.props.params.id));
     }
 
     componentDidUpdate() {
         if (this.state.character.name !== this.props.params.id) {
-            Actions.loadCharacterGeneral(decodeURIComponent(this.props.params.id));
+            Actions.loadCharacter(decodeURIComponent(this.props.params.id));
         }
     }
 

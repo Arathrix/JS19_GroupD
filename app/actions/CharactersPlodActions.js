@@ -6,6 +6,8 @@ var CharactersPlodActions = {
 
     loadCharactersPlodByCount: function(count) {
         var charactersPlod = [];
+
+        // only used by old stats page
         Api.get('plod/byCount/' + count)
             .then(function (response) {
               return response.data;
@@ -25,24 +27,7 @@ var CharactersPlodActions = {
                 }
             });
     },
-    loadCharacterPlodByName: function(name){
-        Api.get('characters/' + name + '?strict=true')
-            .then(function (response) {
-                return response;
-            }).then(function(response){
-                var character = response.data;
-                Api
-                    .get('plod/bySlug/' + character.slug)
-                    .then(function(response) {
-                        var characterPlod = response.data[0];
-                        var characterWithPlod = Object.assign(character,characterPlod);
-                        AppDispatcher.handleServerAction({
-                            actionType: Constants.RECEIVE_CHARACTER_PLOD_BY_NAME,
-                            data: characterWithPlod
-                        });
-                    });
-            });
-    },
+    
     loadCharactersPlodByName: function(names){
         var charactersPlod = [];
         for(var name of names){
