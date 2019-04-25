@@ -27,12 +27,26 @@ export default class MapComp extends Component {
 
   handleCityClick(modal, city) {
     var link = process.env.__PROTOCOL__ + process.env.__WIKI__ + '/index.php/' + city.name;
+    //set link for show-on-wiki
+    modal.find('a.wikilink').attr("href",link);
+    // Body Container
+    var bodyEl = modal.find('.modal-body');
+    /* <- with Spinner*/
+    // bodyEl.html("<span class='glyphicon glyphicon-cog glyph-spin glyph-big spin'></span><iframe style='width: 100%;height: 60vh; overflow: hidden; display:none' src='"+link+"'/>").addClass('text-center');
+    // console.log(bodyEl.find('iframe'));
+    // bodyEl.find('iframe').on("load", function() {
+    //   bodyEl.find('#navbar').remove(); 
+    //   bodyEl.find('.spin').hide();
+    //   bodyEl.find('iframe').show();
+    //   });
+    /* with Spinner ->*/
 
-    var bodyEl = modal.find('.modal-body'); // Body Container
-    // Show Spinner
-    bodyEl.html("<span class='glyphicon glyphicon-cog glyph-spin glyph-big'></span>").addClass('text-center');
-
+    /* <- without Spinner*/
     bodyEl.html("<iframe style='width: 100%;height: 60vh; overflow: hidden;' src='"+link+"'/>");
+    bodyEl.find('iframe').on("load", function() {
+      bodyEl.find('#navbar').remove();
+    });
+    /* <- without Spinner*/
   }
 
   initMap() {
