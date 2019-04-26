@@ -278,7 +278,7 @@ export default class CharacterDetailsMedia extends Component {
         let showAge = this.showBirth ? (isDead && this.showDeath ? this.showDeath : this.SHOW_YEAR) - this.showBirth : false;
         let ageDiff = (booksAge && showAge) ? Math.abs(showAge - booksAge) : false;
 
-        if (booksAge < 0 || showAge < 0) {
+        if (booksAge < 0 || showAge < 0 || booksAge > 300 || showAge > 300) {
             return;
         }
         
