@@ -193,7 +193,7 @@ export default class CharacterDetailsMedia extends Component {
         }
 
         let sbGraphic = (<i className="fas fa-book"></i>);
-        let TOTAL_EPISODES = 67;
+        let TOTAL_EPISODES = 73;
         let appearanceShow, appearanceShowPercentage, appearanceBooks = 0;
 
         let sbAppearTitle, sbAppearTexShow, sbAppearTextBook;
@@ -242,6 +242,10 @@ export default class CharacterDetailsMedia extends Component {
             sbAppearTitle = "TV character";
         } else {
             sbAppearTitle = "Book & TV character";
+        }
+
+        if (appearanceShowPercentage > 100) {
+            appearanceShowPercentage = 100;
         }
 
         let sbAppearText = <div><p>{this.character.name} appears in {appearanceShow ? appearanceShow : 0} episodes. That is  <b>{appearanceShowPercentage}% of all {TOTAL_EPISODES}</b> episodes. {this.charPronoun(true)} appears in <b>{appearanceBooks} out of 5 books</b></p>
