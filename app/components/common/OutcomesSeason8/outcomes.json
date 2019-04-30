@@ -1,5 +1,214 @@
 {
+    "currentEpisode" : 1,
     "characters": {
+        "DaenerysTargaryen": {
+            "name": "Daenerys Targaryen",
+            "outcome": "",
+            "comment": "",
+            "plod": 1,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "JonSnow": {
+            "name": "Jon Snow",
+            "outcome": "",
+            "comment": "",
+            "plod": 12,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "SansaStark": {
+            "name": "Sansa Stark",
+            "outcome": "",
+            "comment": "",
+            "plod": 73,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "AryaStark": {
+            "name": "Arya Stark",
+            "outcome": "",
+            "comment": "",
+            "plod": 47,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "BranStark": {
+            "name": "Bran Stark",
+            "outcome": "",
+            "comment": "",
+            "plod": 58,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "TyrionLannister": {
+            "name": "Tyrion Lannister",
+            "outcome": "",
+            "comment": "",
+            "plod": 3,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "CerseiLannister": {
+            "name": "Cersei Lannister",
+            "outcome": "",
+            "comment": "",
+            "plod": 5,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "JaimeLannister": {
+            "name": "Jaime Lannister",
+            "outcome": "",
+            "comment": "",
+            "plod": 4,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "TheonGreyjoy": {
+            "name": "Theon Greyjoy",
+            "outcome": "",
+            "comment": "",
+            "plod": 10,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "YaraGreyjoy": {
+            "name": "Yara Greyjoy",
+            "outcome": "",
+            "comment": "",
+            "plod": 1,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "EuronGreyjoy": {
+            "name": "Euron Greyjoy",
+            "outcome": "",
+            "comment": "",
+            "plod": 0,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "DavosSeaworth": {
+            "name": "Davos Seaworth",
+            "outcome": "",
+            "comment": "",
+            "plod": 45,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "SamwellTarly": {
+            "name": "Samwell Tarly",
+            "outcome": "",
+            "comment": "",
+            "plod": 3,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "SandorClegane": {
+            "name": "Sandor Clegane",
+            "outcome": "",
+            "comment": "",
+            "plod": 48,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "GregorClegane": {
+            "name": "Gregor Clegane",
+            "outcome": "",
+            "comment": "",
+            "plod": 80,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Melisandre": {
+            "name": "Melisandre",
+            "outcome": "",
+            "comment": "",
+            "plod": 0,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Varys": {
+            "name": "Varys",
+            "outcome": "",
+            "comment": "",
+            "plod": 3,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Bronn": {
+            "name": "Bronn",
+            "outcome": "",
+            "comment": "",
+            "plod": 94,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "PodrrickPayne": {
+            "name": "Podrick Payne",
+            "outcome": "",
+            "comment": "",
+            "plod": 11,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "BrienneOfTarth": {
+            "name": "Brienne of Tarth",
+            "outcome": "",
+            "comment": "",
+            "plod": 13,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Tormund": {
+            "name": "Tormund",
+            "outcome": "",
+            "comment": "",
+            "plod": 2,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Gendry": {
+            "name": "Gendry",
+            "outcome": "",
+            "comment": "",
+            "plod": 12,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Missandei": {
+            "name": "Missandei",
+            "outcome": "",
+            "comment": "",
+            "plod": 0,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "GreyWorm": {
+            "name": "Grey Worm",
+            "outcome": "",
+            "comment": "",
+            "plod": 1,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "Qyburn": {
+            "name": "Qyburn",
+            "outcome": "",
+            "comment": "",
+            "plod": 4,
+            "episode": 0,
+            "image": "tmp"
+        },
+        "EddisonTollett": {
+            "name": "Eddison Tollett",
+            "outcome": "",
+            "comment": "",
+            "plod": 7,
+            "episode": 0,
+            "image": "tmp"
+        },
         "NedUmber": {
             "name": "Ned Umber",
             "outcome": "Ned Umber became a wight",
