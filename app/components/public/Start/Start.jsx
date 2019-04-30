@@ -45,6 +45,7 @@ export default class Start extends Component {
           <Row>
             <Col md={12}>
                 <Outcomes />
+                <p className="center" style={{marginTop: "20px"}}>© 2019 Home Box Office, Inc. / Sky All rights reserved.</p>
             </Col>
           </Row>  
           <Row>

@@ -1,5 +1,5 @@
 {
-    "currentEpisode" : 1,
+    "currentEpisode" : 3,
     "characters": {
         "DaenerysTargaryen": {
             "name": "Daenerys Targaryen",
@@ -67,11 +67,11 @@
         },
         "TheonGreyjoy": {
             "name": "Theon Greyjoy",
-            "outcome": "",
-            "comment": "",
+            "outcome": "Theon Greyjoy died a good man",
+            "comment": "What is dead may never die, but rises again harder and stronger. He protected Bran until his last breath.",
             "plod": 10,
-            "episode": 0,
-            "image": "tmp"
+            "episode": 3,
+            "image": "theon"
         },
         "YaraGreyjoy": {
             "name": "Yara Greyjoy",
@@ -118,14 +118,6 @@
             "outcome": "",
             "comment": "",
             "plod": 80,
-            "episode": 0,
-            "image": "tmp"
-        },
-        "Melisandre": {
-            "name": "Melisandre",
-            "outcome": "",
-            "comment": "",
-            "plod": 0,
             "episode": 0,
             "image": "tmp"
         },
@@ -201,14 +193,6 @@
             "episode": 0,
             "image": "tmp"
         },
-        "EddisonTollett": {
-            "name": "Eddison Tollett",
-            "outcome": "",
-            "comment": "",
-            "plod": 7,
-            "episode": 0,
-            "image": "tmp"
-        },
         "NedUmber": {
             "name": "Ned Umber",
             "outcome": "Ned Umber became a wight",
@@ -216,6 +200,30 @@
             "plod": 77,
             "episode": 1,
             "image": "tmp"
+        },
+        "JorahMormont": {
+            "name": "Jorah Mormont",
+            "outcome": "Jorah died protecting his Khaleesi",
+            "comment": "When the wights came for Daenerys, he rushed into the frey to save her. There he stood.",
+            "plod": 28,
+            "episode": 3,
+            "image": "jorah"
+        },
+        "LyannaMormont": {
+            "name": "Lyanna Mormont",
+            "outcome": "Lyanna Mormont was the fiercest",
+            "comment": "The Lady of Bear Island became a true Giantsbane. Her fury will be missed in the last war to come.",
+            "plod": 3,
+            "episode": 3,
+            "image": "lyanna"
+        },
+        "EddisonTollett": {
+            "name": "Eddison Tollett",
+            "outcome": "Dolorous Edd's watch has ended",
+            "comment": "He saved Samwell Tarly from a wight - a true friend to the end. A surprising death nonetheless.",
+            "plod": 7,
+            "episode": 3,
+            "image": "edd"
         }
     }
 }
