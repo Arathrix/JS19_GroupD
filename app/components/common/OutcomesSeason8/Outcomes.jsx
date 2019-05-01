@@ -39,6 +39,11 @@ export default class OutcomesSeason8 extends Component {
         });
 
         let size = 3;
+        if (window.innerWidth <= 500) {
+            size = 1;
+        } else if (window.innerWidth <= 800) {
+            size = 2;
+        }
 
         for (let i = 0; i < (keys.length/size); i++) {
             let temp = [];
@@ -76,6 +81,10 @@ export default class OutcomesSeason8 extends Component {
             properties.indicators = false;
         }
         
+        if (window.innerWidth <= 500) {
+            properties.transitionDuration = 300;
+        }
+
         return (
             <div id="outcomes">
                 <div>

@@ -100,6 +100,10 @@ export default class CharacterDetailsMedia extends Component {
             return;
         }
 
+        if (this.plodShow == 0 && this.plodBook == 0) {
+            return;
+        }
+
         let sbGraphic = (<i className="fas fa-skull"></i>);
 
         let sbPlodTitle, sbPlodText, sbPlodTextFinal, sbPlodQuote = (
