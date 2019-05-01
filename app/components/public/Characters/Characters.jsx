@@ -16,6 +16,29 @@ import CharacterPlodDisplay from '../../common/CharacterPlodDisplay/CharacterPlo
 import DeadCharacter from './DeadCharacter';
 import RelatedCharacters from './RelatedCharacters';
 
+// import initFB from './fb.js';
+import {
+  ShareButtons,
+  // ShareCounts,
+  generateShareIcon
+} from 'react-share';
+const {
+  FacebookShareButton
+} = ShareButtons;
+
+// const {
+//   FacebookShareCount
+//   // GooglePlusShareCount,
+//   // LinkedinShareCount,
+//   // PinterestShareCount,
+//   // VKShareCount,
+//   // OKShareCount,
+//   // RedditShareCount,
+//   // TumblrShareCount,
+// } = ShareCounts;
+
+const FacebookIcon = generateShareIcon('facebook');
+
 import * as Img from './img';
 
 export default class Character extends Component {
@@ -58,9 +81,20 @@ export default class Character extends Component {
 
     componentDidMount() {
         Actions.loadCharacter(decodeURIComponent(this.props.params.id));
+        console.log("componentDidMount");
+
+        // this.toggleFBButton(document, 'script', 'facebook-jssdk');
+
+    }
+
+    componentWillUpdate(){
+      console.log("componentWillUpdate");
+
+      // this.toggleFBButton(document, 'script', 'facebook-jssdk');
     }
 
     componentDidUpdate() {
+      console.log("componentDidUpdate");
         if (this.state.character.name !== this.props.params.id) {
             Actions.loadCharacter(decodeURIComponent(this.props.params.id));
         }
@@ -73,7 +107,7 @@ export default class Character extends Component {
     _onChange() {
         let character = Store.getCharacter();
 
-        if (this.state.hasLoaded 
+        if (this.state.hasLoaded
             && ((this.state.character.hasBook && character.hasBook && this.state.character.book.name == character.book.name)
             || (this.state.character.hasShow && character.hasShow && this.state.character.show.name == character.show.name))
         ) {
@@ -126,10 +160,30 @@ export default class Character extends Component {
             // Book data
             plodBook:       checkBook ? Math.round(character.book.plodB * 100) : 100,
             plodByYearBook: checkBook ? bookLongevity : [],
-            plodTextBook:   checkBook ? '%(percent)s%' : 'D E A D'  
+            plodTextBook:   checkBook ? '%(percent)s%' : 'D E A D'
         });
     }
-
+    // toggleFBButton(d, s, id) {
+    //   // console.log("toggleFBButtonStart");
+    //   // var js, fjs = document.getElementsByTagName('script')[0];
+    //   // if (d.getElementById(id)){
+    //   //   return;
+    //   // }
+    //   //   console.log(d.getElementById(id));
+    //   // js = d.createElement(s); js.id = id;
+    //   // js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    //   // fjs.parentNode.insertBefore(js, fjs);
+    //   // console.log("toggleFBButtonEnd");
+    //
+    //
+    // }
+    //
+    // handleFBShareClick(){
+    //   var value = document.URL;
+    //   var sharerURL = "https://www.facebook.com/sharer/sharer.php?u=";
+    //   var shareURL = sharerURL + value;
+    //   window.open(shareURL, "_blank");
+    // }
     togglePlodDisplay() {
         if (this.animating) {
             return;
@@ -166,11 +220,11 @@ export default class Character extends Component {
 
     render() {
         var baseUrl = process.env.__PROTOCOL__ + process.env.__API__ + ((process.env.__PORT__ !== undefined) ? ':' + process.env.__PORT__ : '') + process.env.__PREFIX__;
-        
-        var imgBook = (this.state.character.book && this.state.character.book.image) ? (baseUrl + "book/images/" + this.state.character.book.slug + ".jpg") : 
+
+        var imgBook = (this.state.character.book && this.state.character.book.image) ? (baseUrl + "book/images/" + this.state.character.book.slug + ".jpg") :
                       (this.state.character.book && this.state.character.book.gender === "female") ? Img['PlaceholderFemale'] : Img['PlaceholderMale'];
         var imgShow = (this.state.character.show && this.state.character.show.image) ? (baseUrl + "show/images/" + this.state.character.show.slug + ".jpg") : false;
-        
+
         var booksAliveShowDead = (!this.state.character.hasShow || this.state.character.show && this.state.character.show.alive == false)
             && this.state.character.book && this.state.character.book.alive == true ;
 
@@ -182,7 +236,13 @@ export default class Character extends Component {
                         <div className="character-name-container">
                             <div className="character-name-background"></div>
                             <Col md={9} mdOffset={3} className="character-name">
-                                <div className="u-inlineBlock"><h1>{this.state.character.name}</h1></div>
+                                <div className="u-inlineBlock">
+                                  <h1>{this.state.character.name}
+                                    <FacebookShareButton url={window.location.href} >
+                                      <FacebookIcon size={32}/>
+                                    </FacebookShareButton>
+                                  </h1>
+                                </div>
                             </Col>
                         </div>
                     </div>
@@ -191,7 +251,7 @@ export default class Character extends Component {
                     <Col md={3}>
                         <div className="character-photo">
                             <img src={imgBook}/>
-                            {imgShow !== false ? 
+                            {imgShow !== false ?
                                 <img className={"character-show-img " + (booksAliveShowDead ? 'hiddenImg' : '')}src={imgShow}/> : ''}
                             {imgShow !== false ? <div className="disclaimer">© 2019 Home Box Office, Inc. / Sky All rights reserved.</div> : ''}
                         </div>
@@ -217,12 +277,12 @@ export default class Character extends Component {
                                         <ProgressBar now={this.state.plodShow} label={this.state.plodTextShow} />
                                         <img src={Img['RipTombstone']} />
                                     </div>
-                                </div> 
+                                </div>
                                 : this.state.character.hasShow && this.state.character.show && !this.state.character.show.alive ?
                                 <div className="plodShowContainer">
                                     <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>TV show <i className="fas fa-external-link-alt"></i></a>
-                                    <DeadCharacter name={this.state.character.name} 
-                                                   deathText={this.state.character.show && this.state.character.show.death ? this.state.character.show.death + ' AC' : 'D E A D'} 
+                                    <DeadCharacter name={this.state.character.name}
+                                                   deathText={this.state.character.show && this.state.character.show.death ? this.state.character.show.death + ' AC' : 'D E A D'}
                                                    mediumText="TV show"/>
                                 </div>
                                 :
@@ -250,9 +310,9 @@ export default class Character extends Component {
                                 : this.state.character.hasBook && this.state.character.book && !this.state.character.book.alive ?
                                 <div className="plodBookContainer plodContainerHidden plodContainerZIndexLower">
                                     <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>Books <i className="fas fa-external-link-alt"></i></a>
-                                    <DeadCharacter 
-                                        name={this.state.character.name} 
-                                        deathText={this.state.character.book && this.state.character.book.death ? this.state.character.book.death + ' AC' : 'D E A D'} 
+                                    <DeadCharacter
+                                        name={this.state.character.name}
+                                        deathText={this.state.character.book && this.state.character.book.death ? this.state.character.book.death + ' AC' : 'D E A D'}
                                         mediumText="books"/>
                                 </div>
                                 :
