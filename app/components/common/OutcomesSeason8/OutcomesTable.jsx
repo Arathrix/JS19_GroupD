@@ -25,6 +25,7 @@ export default class OutcomesTable extends Component {
                 <Row>
                     <Col>
                         <div id="outcomesTableContainer">
+                            <p className="hideOnSmall" style={{margin: "5px"}}>PLOD = percentage likelihood of death</p>
                             <table>
                                 <tbody>
                                     <tr className="tableHead">
@@ -33,7 +34,7 @@ export default class OutcomesTable extends Component {
                                     </tr>
                                     <tr className="tableHead">
                                         <th>Character</th>
-                                        <th><span className="hideOnSmall">Percentage</span></th>
+                                        <th><span className="hideOnSmall">PLOD</span></th>
                                         <th>1</th>
                                         <th>2</th>
                                         <th>3</th>
