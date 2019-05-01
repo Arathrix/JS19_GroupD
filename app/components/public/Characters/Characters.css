@@ -360,3 +360,7 @@ hr {
 	font-size: 1.5em;
 	text-align: center;
 }
+
+.fb-share-button {
+	margin-right: 5px;
+}

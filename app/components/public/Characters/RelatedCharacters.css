@@ -79,4 +79,14 @@
         user-select: none;
     }
     
+
+}
+
+.relatedCharactersContent .react-slideshow-container + div.indicators > div {
+    background: #333;
+}
+
+
+.relatedCharactersContent .react-slideshow-container + div.indicators .active {
+    background: #ccc;
 }

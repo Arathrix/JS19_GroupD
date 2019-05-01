@@ -100,6 +100,10 @@ export default class CharacterDetailsMedia extends Component {
             return;
         }
 
+        if (this.plodShow == 0 && this.plodBook == 0) {
+            return;
+        }
+
         let sbGraphic = (<i className="fas fa-skull"></i>);
 
         let sbPlodTitle, sbPlodText, sbPlodTextFinal, sbPlodQuote = (
@@ -193,7 +197,7 @@ export default class CharacterDetailsMedia extends Component {
         }
 
         let sbGraphic = (<i className="fas fa-book"></i>);
-        let TOTAL_EPISODES = 67;
+        let TOTAL_EPISODES = 73;
         let appearanceShow, appearanceShowPercentage, appearanceBooks = 0;
 
         let sbAppearTitle, sbAppearTexShow, sbAppearTextBook;
@@ -244,6 +248,10 @@ export default class CharacterDetailsMedia extends Component {
             sbAppearTitle = "Book & TV character";
         }
 
+        if (appearanceShowPercentage > 100) {
+            appearanceShowPercentage = 100;
+        }
+
         let sbAppearText = <div><p>{this.character.name} appears in {appearanceShow ? appearanceShow : 0} episodes. That is  <b>{appearanceShowPercentage}% of all {TOTAL_EPISODES}</b> episodes. {this.charPronoun(true)} appears in <b>{appearanceBooks} out of 5 books</b></p>
         <p>{sbAppearTexShow} {sbAppearTextBook}</p></div>;
         
@@ -278,7 +286,7 @@ export default class CharacterDetailsMedia extends Component {
         let showAge = this.showBirth ? (isDead && this.showDeath ? this.showDeath : this.SHOW_YEAR) - this.showBirth : false;
         let ageDiff = (booksAge && showAge) ? Math.abs(showAge - booksAge) : false;
 
-        if (booksAge < 0 || showAge < 0) {
+        if (booksAge < 0 || showAge < 0 || booksAge > 300 || showAge > 300) {
             return;
         }
         

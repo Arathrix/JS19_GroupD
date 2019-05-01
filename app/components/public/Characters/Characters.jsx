@@ -282,7 +282,7 @@ export default class Character extends Component {
                                 <div className="plodShowContainer">
                                     <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>TV show <i className="fas fa-external-link-alt"></i></a>
                                     <DeadCharacter name={this.state.character.name}
-                                                   deathText={this.state.character.show && this.state.character.show.death ? this.state.character.show.death + ' AC' : 'D E A D'}
+                                                   deathText={this.state.character.show && this.state.character.show.death < 310 ? this.state.character.show.death + ' AC' : 'D E A D'} 
                                                    mediumText="TV show"/>
                                 </div>
                                 :
@@ -312,11 +312,11 @@ export default class Character extends Component {
                                     <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>Books <i className="fas fa-external-link-alt"></i></a>
                                     <DeadCharacter
                                         name={this.state.character.name}
-                                        deathText={this.state.character.book && this.state.character.book.death ? this.state.character.book.death + ' AC' : 'D E A D'}
+                                        deathText={this.state.character.book && this.state.character.book.death < 310 ? this.state.character.book.death + ' AC' : 'D E A D'}
                                         mediumText="books"/>
                                 </div>
                                 :
-                                <div className="plodBookContainer plodContainerHidden plodContainerZIndexLower">
+                                <div className={"plodBookContainer " + (booksAliveShowDead ? '' : 'plodContainerHidden plodContainerZIndexLower')}>
                                     <a className="subtitle" target="_blank" href={"https://awoiaf.westeros.org/index.php/" + this.state.character.name}>Books <i className="fas fa-external-link-alt"></i></a>
                                     <div className="sorryNoData">Sorry, we don't have any data for this character.</div>
                                 </div>

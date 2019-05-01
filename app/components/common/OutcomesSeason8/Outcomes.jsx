@@ -39,6 +39,11 @@ export default class OutcomesSeason8 extends Component {
         });
 
         let size = 3;
+        if (window.innerWidth <= 500) {
+            size = 1;
+        } else if (window.innerWidth <= 800) {
+            size = 2;
+        }
 
         for (let i = 0; i < (keys.length/size); i++) {
             let temp = [];
@@ -76,13 +81,17 @@ export default class OutcomesSeason8 extends Component {
             properties.indicators = false;
         }
         
+        if (window.innerWidth <= 500) {
+            properties.transitionDuration = 300;
+        }
+
         return (
             <div id="outcomes">
                 <div>
                     <hr />
                     <h3 className="center">How did we do?</h3>
                     <h4 className="center">Deaths in season 8 of Game of Thrones</h4>
-                    {/*<Link to="/dead-characters-table" style={{fontSize: "0.8em"}}>Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>*/}
+                    
                     <hr />
                 </div>
                 <div className="outcomesContent">
@@ -127,6 +136,7 @@ export default class OutcomesSeason8 extends Component {
                             }}>Show Spoilers</div>
                         </div>
                     </div>
+                    <Link to="/dead-characters-table" style={{marginTop: "10px", display: "block"}}>Full Table&nbsp; <i className="fas fa-external-link-alt"></i></Link>
                 </div>
             </div>
         );
